@@ -9,7 +9,7 @@ export default function Navegacion() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
+                        <a className="nav-link dropdown-toggle" id="navbarDropdownBlog" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
                         <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                             <li><a className="dropdown-item" href="/">Inicio de Blog</a></li>
                             <li><a className="dropdown-item" href="/post">Post de Blog</a></li>

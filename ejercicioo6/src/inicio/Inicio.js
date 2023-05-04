@@ -25,7 +25,7 @@ export default function Inicio() {
           blogs.map((blog) => { return(
               <div className="mb-4">
                   <div className="small text-muted">{blog.id}</div>
-                  <a className="link-dark" href="#!"><h3>{blog.title}</h3></a>
+                  <a className="link-dark" href={"/blog/" + blog.id} ><h3>{blog.title}</h3></a>
               </div>
             );
           })

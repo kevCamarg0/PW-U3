@@ -6,6 +6,7 @@ export default function Blog() {
   const { id } = useParams(); // Para leer el id pasado en la ruta
   const [blogPost, setBlogPost] = useState(null); // Estado para guardar el blog buscado
   const [blogComments, setBlogComments] = useState(null); // Estado para guardar los comentarios
+  const [buscaAutor, setAutor] = useState(null);
 
   //ESTE ES EL HOOK useEffect PARA OBTENER INFO DE UN BLOG
   useEffect(() => {
@@ -41,7 +42,21 @@ export default function Blog() {
     buscaBlogComments(); // Llamar la funcion para que se ejecute
   }, [id]); // Buscar los comentarios cuando el id sea diferente
 
-  if (!blogPost) {
+  useEffect(() => {
+    // Definicion de la funcion que busca el post usando Axios
+    const buscaAutor = async () => {
+      try {
+        const response = await axios.get(
+          `https://jsonplaceholder.typicode.com/users/${id}`
+        );
+        setAutor(response.data); // Guardar el post en el estado
+      } catch (error) {
+        console.error("Error al buscar el autor:", error);
+      }
+    };
+    buscaAutor(); // Llamar la funcion para que se ejecute
+  }, [id]); // Buscar blog cuando el id sea diferente
+  if (!blogPost || !blogComments || !buscaAutor) {
     return <div>Cargando...</div>; // Mostrar mensaje cargando 
   }
 
@@ -57,8 +72,8 @@ export default function Blog() {
                 alt="..."
               />
               <div class="ms-3">
-                  <div class="fw-bold">Valerie Luna</div>  {/*//Cambiar  por user.username */}
-                  <div class="text-muted">News, Business</div> {/*//Cambiar por user.company.name */}
+                  <div class="fw-bold">{buscaAutor.name}</div>  {/*//Cambiar  por user.username */}
+                  <div class="text-muted">{buscaAutor.company.name}</div> {/*//Cambiar por user.company.name */}
               </div>
             </div>
           </div>
