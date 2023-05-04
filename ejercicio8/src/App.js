@@ -27,11 +27,9 @@ function App() {
     <div className="App">
       <ul className="list-group">
         {elementosLista.map((elemento) => (
-          <li className="list-group-item">{elemento.title}</li>
+          <li key={elemento.id} className={"list-group-item " + 
+          (elemento.completed ? 'list-group-item-success' : 'list-group-item-danger')}>{elemento.title}</li>
         ))}
-        
-        {/* <li className="list-group-item list-group-item-danger">A simple danger list group item</li> 
-        li className="list-group-item list-group-item-success">A simple success list group item</li>*/}
       </ul>
     </div>
   );
